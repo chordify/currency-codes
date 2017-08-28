@@ -1,16 +1,5 @@
---------------------------------------------------------------------------------
--- |
--- | Module      : Data.Currency
--- | Copyright   : (c) 2017 Chordify
--- | License     : MIT
--- |
--- | Maintainer  : matthias@chordify.net
--- | Stability   : provisional
--- | Portability : portable
--- |
--- | Summary     : Representation of currencies according to ISO-4217
--- |
---------------------------------------------------------------------------------
+-- | A Currency representation as specified in the ISO-4217 standard
+
 module Data.Currency where
 
 import           Prelude       hiding (Ordering (..))
@@ -32,7 +21,7 @@ import qualified Safe
 import           System.Random (Random (..))
 
 
--- | A representation of a currency according to ISO-4217
+-- | Actual representation of a currency
 data Currency = Currency
   { alpha   :: Alpha -- ^ Alpha Code
   , numeric :: Int   -- ^ Numeric code

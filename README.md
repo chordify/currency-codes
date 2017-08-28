@@ -40,33 +40,7 @@ instance ToJSON Transaction where
 
 ## Changelog
 
-<details>
-  <summary>v1.0.0 (2017-08-29)</summary>
-  
-  <ul>
-    <li>Provide 2 types `Currency` and `Alpha`</li>
-    <li>Provide constructors for each currency and Alpha code listed in the standard</li>
-    <li>Provide a list of all `Currency`</li>
-    <li>Provide instances for:
-      <ul>
-        <li>Show</li>
-        <li>Eq</li>
-        <li>Read</li>
-        <li>Generic</li>
-        <li>Data</li>
-        <li>Typeable</li>
-        <li>FromJSON (aeson)</li>
-        <li>ToJSON   (aeson)</li>
-        <li>ToSchema (swagger2)</li>
-        <li>Val      (bson)</li>
-        <li>Random   (random)</li>
-        <li>Ord (Alpha only)</li>
-        <li>Enum (Alpha only</li>
-        <li>Bounded (Alpha only)</li>
-      </ul>
-    </li>
-  </ul>
-</details>
+[CHANGELOG.md](CHANGELOG.md)
 
 ## License
 

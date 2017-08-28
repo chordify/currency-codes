@@ -12,6 +12,9 @@ build-type:          Simple
 homepage:            https://gitlab.com
 bug-reports:         https://github.com/bos/aeson/issues
 extra-source-files:  README.md
+                     CHANGELOG.md
+                     stack.yaml
+                     Setup.hs
 cabal-version:       >=1.10
 
 library
