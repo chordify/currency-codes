@@ -42,25 +42,30 @@ instance ToJSON Transaction where
 
 <details>
   <summary>v1.0.0 (2017-08-29)</summary>
-
-  - Provide 2 types `Currency` and `Alpha`
-  - Provide constructors for each currency and Alpha code listed in the standard
-  - Provide a list of all `Currency`
-  - Provide instances for:
-    - Show
-    - Eq
-    - Read
-    - Generic
-    - Data
-    - Typeable
-    - FromJSON (aeson)
-    - ToJSON   (aeson)
-    - ToSchema (swagger2)
-    - Val      (bson)
-    - Random   (random)
-    - Ord (Alpha only)
-    - Enum (Alpha only
-    - Bounded (Alpha only)
+  
+  <ul>
+    <li>Provide 2 types `Currency` and `Alpha`</li>
+    <li>Provide constructors for each currency and Alpha code listed in the standard</li>
+    <li>Provide a list of all `Currency`</li>
+    <li>Provide instances for:
+      <ul>
+        <li>Show</li>
+        <li>Eq</li>
+        <li>Read</li>
+        <li>Generic</li>
+        <li>Data</li>
+        <li>Typeable</li>
+        <li>FromJSON (aeson)</li>
+        <li>ToJSON   (aeson)</li>
+        <li>ToSchema (swagger2)</li>
+        <li>Val      (bson)</li>
+        <li>Random   (random)</li>
+        <li>Ord (Alpha only)</li>
+        <li>Enum (Alpha only</li>
+        <li>Bounded (Alpha only)</li>
+      </ul>
+    </li>
+  </ul>
 </details>
 
 ## License
