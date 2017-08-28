@@ -38,10 +38,6 @@ instance ToJSON Transaction where
     Aeson.genericToJSON Aeson.defaultOptions
 ```
 
-## Changelog
-
-[CHANGELOG.md](CHANGELOG.md)
-
 ## License
 
-[MIT © 2017 Chordify](LICENSE)
+[MIT © 2017 Chordify](https://gitlab.com/chordify/currency-codes/blob/master/LICENSE)

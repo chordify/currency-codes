@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.0 (2017-08-29)
+## v1.0.0.0 (2017-08-29)
   
 - Provide 2 types `Currency` and `Alpha`
 - Provide constructors for each currency and Alpha code listed in the standard
