@@ -35,12 +35,12 @@ library
                      , ScopedTypeVariables
                      , TupleSections
                      , TypeOperators
-  build-depends:       base >= 4.7 && < 5
-                     , aeson
-                     , bson
-                     , lens
-                     , random
-                     , safe
-                     , swagger2
-                     , text
+  build-depends:       base >= 4 && < 5
+                     , aeson >= 0.7.0.0
+                     , bson >= 0.2.0.0
+                     , lens >= 4.0.0
+                     , random >= 1.0.0.0
+                     , safe >= 0.2
+                     , swagger2 >= 2.0.0.0
+                     , text >= 1.0.0.0
   exposed-modules:     Data.Currency
