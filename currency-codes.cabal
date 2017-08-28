@@ -1,6 +1,7 @@
 name:                currency-codes
 version:             1.0.0.0
-description:         Representation of currencies according to the ISO-4217 standard
+synopsis:            ISO-4217 Currency Codes
+description:         ISO-4217 Currency Codes
 license:             MIT
 license-file:        LICENSE
 author:              Chordify
@@ -16,7 +17,7 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   default-language:    Haskell2010
-  ghc-options:         -Wall -Werror -j4 -O2
+  ghc-options:         -Wall
   default-extensions:  DataKinds
                      , DeriveDataTypeable
                      , DeriveFunctor
