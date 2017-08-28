@@ -267,10 +267,6 @@ instance Random Alpha where
     let (r, g') = randomR (fromEnum l, fromEnum h) g
     in  (toEnum r, g')
 
-fromAlpha :: Alpha -> [Currency] -> Maybe Currency
-fromAlpha α =
-  Safe.headMay . filter (== α)
-
 -- Constructor for all currencies
 
 unitOfAccount :: Currency

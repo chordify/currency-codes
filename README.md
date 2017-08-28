@@ -25,7 +25,7 @@ myCurrencies =
 
 fromAlpha :: Alpha -> [Currency] -> Maybe Currency
 fromAlpha α =
-  Safe.headMay . filter (== α)
+  Safe.headMay . filter ((==) α . Currency.alpha)
 
 
 data Transaction = Transaction
