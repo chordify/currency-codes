@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.0.0.0 (2017-09-11)
+
+Remove Swagger instances. It would be better to push them upstream to the swagger2 repository.
+
+
 ## v1.0.0.0 (2017-08-29)
   
 - Provide 2 types `Currency` and `Alpha`
