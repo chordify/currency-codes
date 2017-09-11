@@ -4,16 +4,12 @@ module Data.Currency where
 
 import           Prelude       hiding (Ordering (..))
 
-import           Control.Lens  ((&), (?~))
 import           Control.Monad ((>=>))
 import           Data.Aeson    as Aeson
 import           Data.Aeson    (FromJSON (..), ToJSON (..))
 import           Data.Bson     (Val (..), (=:))
 import qualified Data.Bson     as Bson
 import           Data.Data     (Data)
-import           Data.Proxy    (Proxy (..))
-import           Data.Swagger  (NamedSchema (..), ToSchema (..))
-import qualified Data.Swagger  as Swagger
 import           Data.Text     (Text)
 import           Data.Typeable (Typeable)
 import           GHC.Generics  (Generic)
@@ -32,8 +28,6 @@ data Currency = Currency
 instance FromJSON Currency where parseJSON          = Aeson.genericParseJSON Aeson.defaultOptions
 
 instance ToJSON   Currency where toJSON             = Aeson.genericToJSON Aeson.defaultOptions
-
-instance ToSchema Currency where declareNamedSchema = Swagger.genericDeclareNamedSchema Swagger.defaultSchemaOptions
 
 instance Val Currency where
   val Currency{..} = Bson.Doc
@@ -250,13 +244,6 @@ instance ToJSON   Alpha where toJSON    = Aeson.genericToJSON Aeson.defaultOptio
 
 instance Val      Alpha where val       = val . show
                               cast'     = cast' >=> Safe.readMay
-
-instance ToSchema Alpha where
-  declareNamedSchema _ = do
-    NamedSchema name schema <- declareNamedSchema (Proxy :: Proxy String)
-    return $ NamedSchema name $ schema
-      & Swagger.format  ?~ "iso4217-alpha"
-      & Swagger.example ?~ Aeson.toJSON EUR
 
 instance Random Alpha where
   random g =
