@@ -1,6 +1,8 @@
 ---
 columns: 100
 language_extensions:
+  - BangPatterns
+  - DefaultSignatures
   - DataKinds
   - DeriveDataTypeable
   - DeriveFunctor
