@@ -8,7 +8,8 @@ import           Control.DeepSeq (NFData)
 import           Control.Monad   ((>=>))
 import           Data.Aeson      (FromJSON (..), ToJSON (..))
 import           Data.Bson       (Val (..), (=:))
-import           Data.Data       (Data)
+import           Data.Data       (Data, dataTypeConstrs, dataTypeOf, toConstr)
+import           Data.List       (elemIndex)
 import           Data.Text       (Text)
 import           Data.Typeable   (Typeable)
 import           GHC.Generics    (Generic)
@@ -54,6 +55,7 @@ instance Val Currency where
     <*> Bson.lookup "minor"   doc
     <*> Bson.lookup "name"    doc
 
+
 instance Random Currency where
   random g =
     let
@@ -71,6 +73,7 @@ instance Random Currency where
         randomR (0, length currencies' - 1) g
     in
       (currencies' !! i, g')
+
 
 -- | A type which represents ISO 4217 alphabetic codes as an enum
 data Alpha
@@ -252,10 +255,25 @@ data Alpha
   | ZAR  -- ^ Rand
   | ZMW  -- ^ Zambian Kwacha
   | ZWL  -- ^ Zimbabwe Dollar
-  deriving (Show, Eq, Ord, Enum, Bounded, Read, Generic, Data, Typeable)
+  deriving (Eq, Ord, Enum, Bounded, Generic, Data, Typeable)
 
 
 instance NFData Alpha
+
+
+instance Show Alpha where
+  show =
+    show . toConstr
+
+
+instance Read Alpha where
+  readsPrec _ str =
+    case elemIndex str alphas of
+      Just i ->
+        [(toEnum i, "")]
+
+      Nothing ->
+        []
 
 
 instance FromJSON Alpha where
@@ -290,6 +308,11 @@ instance Random Alpha where
         randomR (fromEnum l, fromEnum h) g
     in
       (toEnum r, g')
+
+
+alphas :: [String]
+alphas =
+  fmap show $ dataTypeConstrs $ dataTypeOf (minBound :: Alpha)
 
 
 -- Constructor for all currencies
