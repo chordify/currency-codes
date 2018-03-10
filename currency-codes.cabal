@@ -1,11 +1,11 @@
 name:                currency-codes
-version:             2.0.0.0
+version:             3.0.0.0
 synopsis:            ISO-4217 Currency Codes
 description:         ISO-4217 Currency Codes
 license:             MIT
 license-file:        LICENSE
 author:              Chordify
-maintainer:          Matthias Benkort <matthias@chordify.net>
+maintainer:          Matthias Benkort <matthias.benkort@gmail.com>
 copyright:           (c) 2017 Chordify
 category:            Data
 build-type:          Simple
