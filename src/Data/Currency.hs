@@ -5,17 +5,17 @@ module Data.Currency where
 import           Prelude       hiding (Ordering (..))
 
 import           Control.Monad ((>=>))
-import           Data.Aeson    as Aeson
 import           Data.Aeson    (FromJSON (..), ToJSON (..))
 import           Data.Bson     (Val (..), (=:))
-import qualified Data.Bson     as Bson
 import           Data.Data     (Data)
 import           Data.Text     (Text)
 import           Data.Typeable (Typeable)
 import           GHC.Generics  (Generic)
-import qualified Safe
 import           System.Random (Random (..))
 
+import qualified Data.Aeson    as Aeson
+import qualified Data.Bson     as Bson
+import qualified Safe
 
 -- | Actual representation of a currency
 data Currency = Currency
@@ -25,36 +25,48 @@ data Currency = Currency
   , name    :: Text  -- ^ English name
   } deriving (Show, Eq, Read, Generic, Data, Typeable)
 
-instance FromJSON Currency where parseJSON          = Aeson.genericParseJSON Aeson.defaultOptions
 
-instance ToJSON   Currency where toJSON             = Aeson.genericToJSON Aeson.defaultOptions
+instance FromJSON Currency where
+  parseJSON =
+    Aeson.genericParseJSON Aeson.defaultOptions
+
+
+instance ToJSON Currency where
+  toJSON =
+    Aeson.genericToJSON Aeson.defaultOptions
+
 
 instance Val Currency where
   val Currency{..} = Bson.Doc
-    [ "alpha"  =: alpha
-    , "numeric"  =: numeric
-    , "minor" =: minor
+    [ "alpha"   =: alpha
+    , "numeric" =: numeric
+    , "minor"   =: minor
     , "name"    =: name
     ]
 
-  cast' v = case v of
-    Bson.Doc doc -> Currency
-      <$> Bson.lookup "alpha"   doc
-      <*> Bson.lookup "numeric" doc
-      <*> Bson.lookup "minor"   doc
-      <*> Bson.lookup "name"    doc
-
-    _ -> Nothing
+  cast' = cast' >=> \doc -> Currency
+    <$> Bson.lookup "alpha"   doc
+    <*> Bson.lookup "numeric" doc
+    <*> Bson.lookup "minor"   doc
+    <*> Bson.lookup "name"    doc
 
 instance Random Currency where
   random g =
-    let (i, g') = randomR (0, length currencies - 1) g
-    in  (currencies !! i, g')
+    let
+      (i, g') =
+        randomR (0, length currencies - 1) g
+    in
+      (currencies !! i, g')
 
   randomR (a, b) g =
-    let currencies' = dropWhile (/= a) $ takeWhile (/= b) currencies
-        (i, g')    = randomR (0, length currencies' - 1) g
-    in  (currencies' !! i, g')
+    let
+      currencies' =
+        dropWhile (/= a) $ takeWhile (/= b) currencies
+
+      (i, g') =
+        randomR (0, length currencies' - 1) g
+    in
+      (currencies' !! i, g')
 
 -- | A type which represents ISO 4217 alphabetic codes as an enum
 data Alpha
@@ -238,21 +250,40 @@ data Alpha
   | ZWL  -- ^ Zimbabwe Dollar
   deriving (Show, Eq, Ord, Enum, Bounded, Read, Generic, Data, Typeable)
 
-instance FromJSON Alpha where parseJSON = Aeson.genericParseJSON Aeson.defaultOptions
 
-instance ToJSON   Alpha where toJSON    = Aeson.genericToJSON Aeson.defaultOptions
+instance FromJSON Alpha where
+  parseJSON =
+    Aeson.genericParseJSON Aeson.defaultOptions
 
-instance Val      Alpha where val       = val . show
-                              cast'     = cast' >=> Safe.readMay
+
+instance ToJSON Alpha where
+  toJSON =
+    Aeson.genericToJSON Aeson.defaultOptions
+
+
+instance Val Alpha where
+  val =
+    val . show
+
+  cast' =
+    cast' >=> Safe.readMay
+
 
 instance Random Alpha where
   random g =
-    let (r, g') = randomR (fromEnum (minBound :: Alpha), fromEnum(maxBound :: Alpha)) g
-    in  (toEnum r, g')
+    let
+      (r, g') =
+        randomR (fromEnum (minBound :: Alpha), fromEnum(maxBound :: Alpha)) g
+    in
+      (toEnum r, g')
 
   randomR (l, h) g =
-    let (r, g') = randomR (fromEnum l, fromEnum h) g
-    in  (toEnum r, g')
+    let
+      (r, g') =
+        randomR (fromEnum l, fromEnum h) g
+    in
+      (toEnum r, g')
+
 
 -- Constructor for all currencies
 
