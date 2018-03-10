@@ -6,7 +6,7 @@ license:             MIT
 license-file:        LICENSE
 author:              Chordify
 maintainer:          Matthias Benkort <matthias.benkort@gmail.com>
-copyright:           (c) 2017 Chordify
+copyright:           (c) 2017-2018 Chordify
 category:            Data
 build-type:          Simple
 homepage:            https://github.com/chordify/currency-codes

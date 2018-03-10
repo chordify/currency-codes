@@ -5,28 +5,24 @@
 This package mainly provides 2 data types to represent and manipulate currencies according to
 the [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) standard. 
 
-It also provides a handful of instances for common typeclasses (`Show`, `Read`, `Random`, `ToJSON`,
-`FromJSON`, `Val`, `ToSchema`). 
+It also provides a handful of instances for common typeclasses (`Show`, `Read`, `Random`, `ToJSON`, `FromJSON`, `Val`, `Data`, `Typeable`, `Generic`, `NFData`). 
 
 ## Example
 
-```haskell
+```hs
 import           Data.Aeson     (ToJSON(..))
-import qualified Data.Aeson     as Aeson
-import           Data.Currency  (Currency, Alpha)
-import qualified Data.Currency  as Currency
+import           Data.Currency  (Currency, Alpha(..))
 import           GHC.Generics   (Generic)
 import qualified Safe
+import qualified Data.Aeson     as Aeson
+import qualified Data.Currency  as Currency
 
 
 myCurrencies :: [Currency]
 myCurrencies =
-  [Currency.eur, Currency.usdDollar]
-
-fromAlpha :: Alpha -> [Currency] -> Maybe Currency
-fromAlpha α =
-  Safe.headMay . filter ((==) α . Currency.alpha)
-
+  [ Currency.fromAlpha EUR
+  , Currency.fromAlpha USD
+  ]
 
 data Transaction = Transaction
   { amount   :: Integer
@@ -40,4 +36,4 @@ instance ToJSON Transaction where
 
 ## License
 
-[MIT © 2017 Chordify](https://gitlab.com/chordify/currency-codes/blob/master/LICENSE)
+[MIT © 2017-2018 Chordify](https://gitlab.com/chordify/currency-codes/blob/master/LICENSE)
