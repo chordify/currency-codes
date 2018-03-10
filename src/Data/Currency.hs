@@ -2,19 +2,20 @@
 
 module Data.Currency where
 
-import           Prelude       hiding (Ordering (..))
+import           Prelude         hiding (Ordering (..))
 
-import           Control.Monad ((>=>))
-import           Data.Aeson    (FromJSON (..), ToJSON (..))
-import           Data.Bson     (Val (..), (=:))
-import           Data.Data     (Data)
-import           Data.Text     (Text)
-import           Data.Typeable (Typeable)
-import           GHC.Generics  (Generic)
-import           System.Random (Random (..))
+import           Control.DeepSeq (NFData)
+import           Control.Monad   ((>=>))
+import           Data.Aeson      (FromJSON (..), ToJSON (..))
+import           Data.Bson       (Val (..), (=:))
+import           Data.Data       (Data)
+import           Data.Text       (Text)
+import           Data.Typeable   (Typeable)
+import           GHC.Generics    (Generic)
+import           System.Random   (Random (..))
 
-import qualified Data.Aeson    as Aeson
-import qualified Data.Bson     as Bson
+import qualified Data.Aeson      as Aeson
+import qualified Data.Bson       as Bson
 import qualified Safe
 
 -- | Actual representation of a currency
@@ -24,6 +25,9 @@ data Currency = Currency
   , minor   :: Int   -- ^ Number of decimal units
   , name    :: Text  -- ^ English name
   } deriving (Show, Eq, Read, Generic, Data, Typeable)
+
+
+instance NFData Currency
 
 
 instance FromJSON Currency where
@@ -249,6 +253,9 @@ data Alpha
   | ZMW  -- ^ Zambian Kwacha
   | ZWL  -- ^ Zimbabwe Dollar
   deriving (Show, Eq, Ord, Enum, Bounded, Read, Generic, Data, Typeable)
+
+
+instance NFData Alpha
 
 
 instance FromJSON Alpha where
