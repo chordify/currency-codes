@@ -30,10 +30,10 @@ import qualified Safe
 
 -- | Actual representation of a currency
 data Currency = Currency
-  { alpha   :: Alpha -- ^ Alpha Code
-  , numeric :: Int   -- ^ Numeric code
-  , minor   :: Int   -- ^ Number of decimal units
-  , name    :: Text  -- ^ English name
+  { alpha   :: !Alpha -- ^ Alpha Code
+  , numeric :: !Int   -- ^ Numeric code
+  , minor   :: !Int   -- ^ Number of decimal units
+  , name    :: !Text  -- ^ English name
   } deriving (Show, Eq, Read, Generic, Data, Typeable)
 
 
