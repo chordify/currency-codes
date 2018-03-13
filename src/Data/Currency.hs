@@ -277,12 +277,15 @@ instance Show Alpha where
 
 instance Read Alpha where
   readsPrec _ str =
-    case elemIndex str alphas of
-      Just i ->
-        [(toEnum i, "")]
+    let
+      (α, rest) = splitAt 3 (dropWhile (== ' ') str)
+    in
+      case elemIndex α alphas of
+        Just i ->
+          [(toEnum i, rest)]
 
-      Nothing ->
-        []
+        Nothing ->
+          []
 
 
 instance FromJSON Alpha where
