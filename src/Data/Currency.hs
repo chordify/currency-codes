@@ -1,8 +1,9 @@
 -- | A Currency representation as specified in the ISO-4217 standard
 
 module Data.Currency
+  (
   -- * Types
-  ( Currency(..)
+  Currency(..)
   , Alpha(..)
   , currencies
 
