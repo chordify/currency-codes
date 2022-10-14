@@ -182,7 +182,7 @@ data Alpha
   | MMK  -- ^ Kyat
   | MNT  -- ^ Tugrik
   | MOP  -- ^ Pataca
-  | MRO  -- ^ Ouguiya
+  | MRU  -- ^ Ouguiya
   | MUR  -- ^ Mauritius Rupee
   | MVR  -- ^ Rufiyaa
   | MWK  -- ^ Malawi Kwacha
@@ -216,11 +216,11 @@ data Alpha
   | SEK  -- ^ Swedish Krona
   | SGD  -- ^ Singapore Dollar
   | SHP  -- ^ Saint Helena Pound
-  | SLL  -- ^ Leone
+  | SLE  -- ^ Leone
   | SOS  -- ^ Somali Shilling
   | SRD  -- ^ Surinam Dollar
   | SSP  -- ^ South Sudanese Pound
-  | STD  -- ^ Dobra
+  | STN  -- ^ Dobra
   | SVC  -- ^ El Salvador Colon
   | SYP  -- ^ Syrian Pound
   | SZL  -- ^ Lilangeni
@@ -240,7 +240,7 @@ data Alpha
   | UYI  -- ^ Uruguay Peso en Unidades Indexadas (URUIURUI)
   | UYU  -- ^ Peso Uruguayo
   | UZS  -- ^ Uzbekistan Sum
-  | VEF  -- ^ Bolívar
+  | VES  -- ^ Bolívar
   | VND  -- ^ Dong
   | VUV  -- ^ Vatu
   | WST  -- ^ Tala
@@ -424,7 +424,7 @@ fromAlpha α =
     MMK -> Currency MMK 104 2 "Kyat"
     MNT -> Currency MNT 496 2 "Tugrik"
     MOP -> Currency MOP 446 2 "Pataca"
-    MRO -> Currency MRO 478 2 "Ouguiya"
+    MRU -> Currency MRU 929 2 "Ouguiya"
     MUR -> Currency MUR 480 2 "Mauritius Rupee"
     MVR -> Currency MVR 462 2 "Rufiyaa"
     MWK -> Currency MWK 454 2 "Malawi Kwacha"
@@ -458,11 +458,11 @@ fromAlpha α =
     SEK -> Currency SEK 752 2 "Swedish Krona"
     SGD -> Currency SGD 702 2 "Singapore Dollar"
     SHP -> Currency SHP 654 2 "Saint-Helena Pound"
-    SLL -> Currency SLL 694 2 "Leone"
+    SLE -> Currency SLE 925 2 "Leone"
     SOS -> Currency SOS 706 2 "Somali Shilling"
     SRD -> Currency SRD 968 2 "Surinam Dollar"
     SSP -> Currency SSP 728 2 "South Sudanese Pound"
-    STD -> Currency STD 678 2 "Dobra"
+    STN -> Currency STN 930 2 "Dobra"
     SVC -> Currency SVC 222 2 "El Salvador Colon"
     SYP -> Currency SYP 760 2 "Syrian Pound"
     SZL -> Currency SZL 748 2 "Lilangeni"
@@ -482,7 +482,7 @@ fromAlpha α =
     UYI -> Currency UYI 940 0 "Uruguay Peso en Unidades Indexadas (URUIURUI)"
     UYU -> Currency UYU 858 2 "Peso Uruguayo"
     UZS -> Currency UZS 860 2 "Uzbekistan"
-    VEF -> Currency VEF 937 2 "Bolívar"
+    VES -> Currency VES 928 2 "Bolívar"
     VND -> Currency VND 704 0 "Dong"
     VUV -> Currency VUV 548 0 "Vatu"
     WST -> Currency WST 882 2 "Tala"
